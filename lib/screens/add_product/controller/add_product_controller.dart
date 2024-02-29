@@ -10,6 +10,7 @@ class AddProductController extends GetxController{
   TextEditingController productpriceController=TextEditingController();
   TextEditingController productdiscountPercentageController=TextEditingController();
   TextEditingController productstockController=TextEditingController();
+  TextEditingController productRatingController=TextEditingController();
   TextEditingController productbrandController=TextEditingController();
   var showLoader=false.obs;
   var selectedCategory="".obs;
@@ -39,7 +40,7 @@ class AddProductController extends GetxController{
       "description": productdescriptionController.text,
       "price": productpriceController.text,
       "discountPercentage": productdiscountPercentageController.text,
-      "rating": 4.69,
+      "rating": productRatingController.text,
       "stock": productstockController.text,
       "brand": productbrandController.text,
       "category": selectedCategory.value
@@ -47,6 +48,12 @@ class AddProductController extends GetxController{
     var client= ApiClient();
     await client.addProduct(body).then((value) {
       showLoader.value=false;
+      productTitleController.text="";
+      productdescriptionController.text="";
+      productpriceController.text="";
+      productdiscountPercentageController.text="";
+      productstockController.text="";
+      productbrandController.text="";
       Get.snackbar("Success", "Product Added Successfully",backgroundColor: Colors.green,colorText: Colors.white);
 
 

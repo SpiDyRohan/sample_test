@@ -28,6 +28,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
             )
           : Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: Get.height / 3.1,
