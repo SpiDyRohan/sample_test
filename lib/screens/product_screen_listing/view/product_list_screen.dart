@@ -48,8 +48,10 @@ class _ProductListScreenState extends State<ProductListScreen> {
                   decoration: InputDecoration(
                       suffixIcon: GestureDetector(
                           onTap: () {
+                            if(controller.queryController.text != ""){
+                              controller.getProductsAPi();
+                            }
                             controller.queryController.text = "";
-                            controller.getProductsAPi();
                             FocusManager.instance.primaryFocus!.unfocus();
                           },
                           child: Icon(Icons.close)),
