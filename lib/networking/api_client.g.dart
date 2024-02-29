@@ -130,6 +130,33 @@ class _ApiClient implements ApiClient {
   }
 
   @override
+  Future<CategoryListingResponse> categoryListingApi(String tag) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CategoryListingResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/products/category/${tag}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = CategoryListingResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<ProductDetailResponse> productDetailApi(int productId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

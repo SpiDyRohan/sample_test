@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sample_app/networking/api_client.dart';
+
+import '../../../networking/api_client.dart';
 
 class AddProductController extends GetxController{
   TextEditingController productTitleController=TextEditingController();
@@ -9,9 +11,9 @@ class AddProductController extends GetxController{
   TextEditingController productdiscountPercentageController=TextEditingController();
   TextEditingController productstockController=TextEditingController();
   TextEditingController productbrandController=TextEditingController();
-  RxList<String> categoryList=<String>[].obs;
-  var selectedCategory="".obs;
   var showLoader=false.obs;
+  var selectedCategory="".obs;
+  RxList<String> categoryList=<String>[].obs;
   @override
   void onInit() {
     // TODO: implement onInit
@@ -29,6 +31,7 @@ class AddProductController extends GetxController{
 
     });
   }
+
   void addProduct() async {
     showLoader.value=true;
     var body={
@@ -44,10 +47,13 @@ class AddProductController extends GetxController{
     var client= ApiClient();
     await client.addProduct(body).then((value) {
       showLoader.value=false;
+      Get.snackbar("Success", "Product Added Successfully",backgroundColor: Colors.green,colorText: Colors.white);
+
 
     }).onError((error, stackTrace) {
       showLoader.value=false;
     });
   }
+
 
 }

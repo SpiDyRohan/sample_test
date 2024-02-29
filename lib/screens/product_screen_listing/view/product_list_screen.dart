@@ -29,9 +29,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 padding: const EdgeInsets.only(right: 20),
                 child: GestureDetector(
                     onTap: () {
-                      Get.toNamed(Routes.addProductScreen);
+                      Get.toNamed(Routes.productsbyCategory);
                     },
-                    child: Text("ADD PRODUCT")),
+                    child: Text("BY CATEGORY")),
               )
             ],
           ),

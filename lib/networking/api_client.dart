@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:sample_app/response_models/add_product_response/add_product_response.dart';
+import 'package:sample_app/response_models/category_listing_response/category_listing_response.dart';
 import 'package:sample_app/response_models/productDetailResponse/product_detail_response.dart';
 import 'package:sample_app/response_models/product_list_response.dart';
 
@@ -42,6 +43,10 @@ abstract class ApiClient{
 
  @GET('/products/categories')
  Future<List<String>> productCategoryApi();
+
+
+ @GET('/products/category/{tag}')
+ Future<CategoryListingResponse> categoryListingApi(@Path("tag") String tag);
 
 
  @GET('/products/{productId}')
